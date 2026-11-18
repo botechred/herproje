@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build portable zip archive
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          git archive --format=zip --prefix="herproje/" -o "herproje-${TAG}.zip" HEAD
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          cat << 'EOF' > RELEASE_NOTES.md
+          ## herproje — Minimal-Token AI Proje Başlangıç Platformu
+
+          Yapay zeka kodlama ajanlarıyla (**Antigravity**, **ZCode**, **Cursor**, **Claude Code**, **Codex**) çalışırken **%70–85 daha az token** tüketerek modern web, masaüstü ve mobil projeler üretmek için hazırlanmış taşınabilir başlangıç paketi.
+
+          ### Öne Çıkanlar
+          - **5 Hazır Şablon (`templates/`):** `starter-webpage`, `starter-webapp` (PWA + Node API), `starter-desktop` (`--app` çerçevesiz pencere), `starter-android` ve `proje-temeli-minimal`.
+          - **3 Dahili WCAG AA Tema:** `Editorial`, `Obsidian` ve `Warm` (`:focus-visible` ve `prefers-reduced-motion` destekli).
+          - **Sıfır Bağımlılıklı Web Snippets (`snippets/web/`):** `ui-kit.js` (modal, toast, filtre, tema seçici) ve `storage.js` (LocalStorage + JSON yedekleme).
+          - **Token Koruma Kalkanı:** `Token-Koruma-Aktif-Et.bat`, 3-Fazlı Çalışma Protokolü ve `/devam` – `/kapat` oturum devir sistemi.
+          - **Tek Tık Kurulum Sihirbazı:** `Yeni-Proje-Olustur.bat` ve özel yüksek DPI `.ico` ikon seti (`assets/`).
+
+          ### Hızlı Kurulum (Git Olmadan)
+          1. Aşağıdaki **`herproje-TAG_PLACEHOLDER.zip`** dosyasını indirip klasöre çıkartın.
+          2. Klasördeki **`Yeni-Proje-Olustur.bat`** dosyasına çift tıklayın.
+          EOF
+          sed -i "s/TAG_PLACEHOLDER/${TAG}/g" RELEASE_NOTES.md
+          gh release create "${TAG}" "herproje-${TAG}.zip" \
+            --title "herproje ${TAG} — Minimal-Token AI Başlangıç Platformu" \
+            --notes-file RELEASE_NOTES.md
