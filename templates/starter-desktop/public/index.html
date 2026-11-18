@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr" data-theme="editorial">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{PROJE}}</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <p class="brand-title">{{PROJE}}</p>
+        <span class="brand-tag">PWA + API</span>
+      </div>
+      <button type="button" class="btn-secondary" data-theme-toggle>Tema: Açık</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>{{PROJE}}</h1>
+        <p>{{HEDEF}}</p>
+      </section>
+
+      <section class="workspace-bar">
+        <input id="item-input" class="input-field" type="text" placeholder="Sunucuya kaydedilecek yeni öğe...">
+        <button id="add-btn" type="button" class="btn-primary">Kaydet</button>
+      </section>
+
+      <section id="item-list" class="list-panel" aria-live="polite"></section>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

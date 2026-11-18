@@ -1,0 +1,15 @@
+.git/
+node_modules/
+dist/
+build/
+.gradle/
+.kotlin/
+artifacts/
+logs/
+*.log
+.zcode/
+.claude/
+*.apk
+*.aab
+*.7z
+*.zip

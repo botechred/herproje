@@ -1,0 +1,13 @@
+# Backup Minimal Excludes
+node_modules/
+dist/
+build/
+bin/
+obj/
+*.log
+*.zip
+*.7z
+.git/
+.vscode/
+.idea/
+*.tmp

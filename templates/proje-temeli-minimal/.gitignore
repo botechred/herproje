@@ -1,0 +1,11 @@
+.env
+*.log
+*.zip
+*.7z
+.zcode/
+.claude/
+node_modules/
+dist/
+build/
+bin/
+obj/
