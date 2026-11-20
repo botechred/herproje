@@ -1,4 +1,4 @@
-# new-project.ps1 — Akilli & Minimal Token Proje Olusturucu (herproje)
+﻿# new-project.ps1 — Akilli & Minimal Token Proje Olusturucu (herproje)
 # Kullanim:
 #   .\scripts\new-project.ps1                                       -> 3 soruluk interaktif sihirbaz
 #   .\scripts\new-project.ps1 <ad> -Type webpage -Goal "Kisa hedef" -> Dogrudan kurulum
@@ -113,6 +113,19 @@ if ((Test-Path $handoffFile) -and ($Type -eq 'minimal')) {
     $ho = $ho + "`n## Ilk Hedef`n- $Goal`n"
     [System.IO.File]::WriteAllText($handoffFile, $ho, $utf8NoBom)
   }
+}
+
+# gempro-guard Antigravity eklentisini projenin .agents/plugins dizinine aktar
+$pluginSrcCandidates = @(
+  (Join-Path $repoRoot 'plugins\gempro-guard'),
+  (Join-Path $env:DEVSTACK 'plugins\gempro-guard'),
+  (Join-Path $env:USERPROFILE '.gemini\config\plugins\gempro-guard')
+) | Where-Object { $_ -and (Test-Path $_) }
+
+if ($pluginSrcCandidates.Count -gt 0) {
+  $targetPluginDir = Join-Path $target '.agents\plugins\gempro-guard'
+  New-Item -ItemType Directory -Force -Path $targetPluginDir | Out-Null
+  Copy-Item -Path "$($pluginSrcCandidates[0])\*" -Destination $targetPluginDir -Recurse -Force
 }
 
 git -C $target init | Out-Null

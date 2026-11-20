@@ -1,0 +1,8 @@
+{
+  "name": "gempro-guard",
+  "version": "1.0.0",
+  "description": "Antigravity otomatik komut optimize edici, RTK sarmalayici ve gempro token koruma kalkani.",
+  "author": "Botechred",
+  "repository": "https://github.com/Botechred/gempro",
+  "disabled": false
+}

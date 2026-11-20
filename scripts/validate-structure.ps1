@@ -1,4 +1,4 @@
-# validate-structure.ps1 — herproje Starter Platform Yapi Dogrulamasi
+﻿# validate-structure.ps1 — herproje Starter Platform Yapi Dogrulamasi
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 
@@ -27,7 +27,8 @@ $requiredTemplates = @(
   'templates\starter-webpage',
   'templates\starter-webapp',
   'templates\starter-desktop',
-  'templates\starter-android'
+  'templates\starter-android',
+  'plugins\gempro-guard'
 )
 
 $missingFiles = @($requiredFiles | Where-Object { -not (Test-Path (Join-Path $root $_) -PathType Leaf) })

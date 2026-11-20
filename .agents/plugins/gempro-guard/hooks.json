@@ -1,0 +1,27 @@
+{
+  "gempro-command-rewriter": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/command-rewriter.mjs",
+            "commandWindows": "node .\\hooks\\command-rewriter.mjs",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "gempro-prompt-optimizer": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node ./hooks/prompt-optimizer.mjs",
+        "commandWindows": "node .\\hooks\\prompt-optimizer.mjs",
+        "timeout": 5
+      }
+    ]
+  }
+}

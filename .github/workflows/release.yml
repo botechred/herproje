@@ -30,12 +30,13 @@ jobs:
 
           Yapay zeka kodlama ajanlarıyla (**Antigravity**, **ZCode**, **Cursor**, **Claude Code**, **Codex**) çalışırken **%70–85 daha az token** tüketerek modern web, masaüstü ve mobil projeler üretmek için hazırlanmış taşınabilir başlangıç paketi.
 
-          ### Öne Çıkanlar
+          ### Öne Çıkanlar (v1.1.0)
+          - **gempro-guard Antigravity Eklentisi:** Terminalde `git` komutlarını otomatik RTK ile sarmalama ve `PreInvocation` kancasıyla geliştirici jargonunu arındırma.
+          - **Otonom Hedef Odaklılık (/goal Uyumlu):** 5-adımlı devre kesici ve yapay "dur/onay bekle" kısıtları kaldırıldı; paralel ve alt ajanlar (subagents, swarm) serbestçe çalışabilir.
           - **5 Hazır Şablon (`templates/`):** `starter-webpage`, `starter-webapp` (PWA + Node API), `starter-desktop` (`--app` çerçevesiz pencere), `starter-android` ve `proje-temeli-minimal`.
           - **3 Dahili WCAG AA Tema:** `Editorial`, `Obsidian` ve `Warm` (`:focus-visible` ve `prefers-reduced-motion` destekli).
           - **Sıfır Bağımlılıklı Web Snippets (`snippets/web/`):** `ui-kit.js` (modal, toast, filtre, tema seçici) ve `storage.js` (LocalStorage + JSON yedekleme).
-          - **Token Koruma Kalkanı:** `Token-Koruma-Aktif-Et.bat`, 3-Fazlı Çalışma Protokolü ve `/devam` – `/kapat` oturum devir sistemi.
-          - **Tek Tık Kurulum Sihirbazı:** `Yeni-Proje-Olustur.bat` ve özel yüksek DPI `.ico` ikon seti (`assets/`).
+          - **Otomatik Bat Entegrasyonu:** `Yeni-Proje-Olustur.bat` ve `Token-Koruma-Aktif-Et.bat` projeleri otomatik olarak eklenti ve kurallarla senkronize eder.
 
           ### Hızlı Kurulum (Git Olmadan)
           1. Aşağıdaki **`herproje-TAG_PLACEHOLDER.zip`** dosyasını indirip klasöre çıkartın.
